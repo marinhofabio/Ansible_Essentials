@@ -1,0 +1,18 @@
+- hosts: servers
+  user: stark
+  become: yes
+  connection: ssh
+  gather_facts: false
+  tasks:
+   - name: INSTALLING ESSENTIAL PACKAGES 
+     apt:
+       name:
+       - 'aptitude'
+       - 'build-essential'
+       - 'chrony'  
+       - 'iptraf-ng'  
+       - 'lynis'
+       - 'nmon'
+       - 'tcpdump'  
+       - 'unzip'
+       state: latest

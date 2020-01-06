@@ -1,0 +1,10 @@
+- hosts: servers
+  user: stark
+  become: yes
+  gather_facts: false
+  connection: ssh
+  tasks:
+  - name: CHANGING KERNEL SWAPPINESS TO 1
+    sysctl:
+       name: vm.swappiness
+       value: 1

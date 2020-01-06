@@ -1,5 +1,5 @@
 - hosts: servers
-  user: fmarinho
+  user: stark
   become: yes
   connection: ssh
   gather_facts: false

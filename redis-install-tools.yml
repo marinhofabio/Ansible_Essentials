@@ -1,0 +1,14 @@
+- hosts: servers
+  user: stark
+  become: yes
+  connection: ssh
+  gather_facts: false
+  tasks:
+   - name: INSTALLING REDIS PACKAGES
+     apt:
+       name:
+       - 'redis'
+       - 'redis-server'
+       - 'redis-sentinel'
+       - 'redis-tools'
+       state: absent

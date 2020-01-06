@@ -1,5 +1,5 @@
 - hosts: servers
-  user: fmarinho
+  user: stark
   become: yes
   connection: ssh
   gather_facts: false
@@ -10,3 +10,5 @@
       owner: root
       group: root
       mode:  0660
+  - name: CREATING AN ACL TO ALLOW READ ACCESS TO THE FILESYSTEM TABLE FILE
+    command: setfacl -m u:stark:r /etc/fstab 
