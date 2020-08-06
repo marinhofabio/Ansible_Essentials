@@ -1,0 +1,30 @@
+---
+
+- name: USER CREATION PLAYBOOK - EXAMPLE 02
+  hosts: localhost
+  user: fmarinho
+  become: yes  
+  connection: ssh
+  gather_facts: false	
+
+  vars:
+       newshell: "{{ newshell }}"
+       newlogin: "{{ newlogin }}"
+       newpassw: "{{ newpassw }}"
+       newdescr: "{{ newdescr }}"
+  
+  tasks:
+  
+  - name: Criando o novo usuário... 
+    user:
+      name:    "{{ newlogin }}"
+      comment: "{{ newdescr }}"
+      shell:   "{{ newshell }}"
+
+  - name: Criando a senha para o novo usuário...
+    expect:
+      command: passwd "{{ newlogin }}"
+      responses:
+        (?i)password: "{{ newpassw }}"	
+
+...
