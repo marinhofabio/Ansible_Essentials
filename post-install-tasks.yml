@@ -1,9 +1,13 @@
+---
+
 - hosts: servers
   user: fmarinho
   become: yes
   connection: ssh
   gather_facts: false
+
   tasks:
+
    - name: INSTALLING BASIC PACKAGES 
      yum:
        name: 
@@ -13,3 +17,5 @@
        - 'yum-utils'
        - 'git-all'
        state: latest
+
+...

@@ -1,0 +1,47 @@
+---
+
+- hosts: localhost
+  user: fmarinho
+  become: yes
+  gather_facts: false
+  connection: ssh
+  
+  tasks:
+
+  - name:
+    sysctl:
+       name:  kernel.core_uses_pid
+       value: 1
+       sysctl_file: /etc/sysctl.d/10-lynis-kernel.conf
+
+  - name:
+    sysctl:
+       name:  kernel.ctrl-alt-del
+       value: 0
+
+  - name:
+    sysctl:
+       name:  kernel.dmesg_restrict
+       value: 1
+
+  - name:
+    sysctl:
+       name:  kernel.kptr_restrict
+       value: 2
+
+  - name:
+    sysctl:
+       name:  kernel.randomize_va_space
+       value: 2
+
+  - name:
+    sysctl:
+       name:  kernel.sysrq
+       value: 0
+
+  - name:
+    sysctl:
+       name:  kernel.yama.ptrace_scope
+       value: 1
+
+

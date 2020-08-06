@@ -1,14 +1,21 @@
+---
+
 - hosts: servers
   user: stark
   become: yes
   connection: ssh
   gather_facts: false
+ 
   tasks:
+
   - name: HARDENING FSTAB FILE
     file: 
       path:  /etc/fstab
       owner: root
       group: root
       mode:  0660
+
   - name: CREATING AN ACL TO ALLOW READ ACCESS TO THE FILESYSTEM TABLE FILE
     command: setfacl -m u:stark:r /etc/fstab 
+
+...

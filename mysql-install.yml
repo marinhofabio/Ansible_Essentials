@@ -1,9 +1,13 @@
+---
+
 - hosts: servers
   user: stark
   become: yes
   connection: ssh
   gather_facts: false
+  
   tasks:
+  
   - name: INSTALLING MYSQL PACKAGES AND DEPENDENCIES 
     apt:
       name:
@@ -20,9 +24,13 @@
       - 'mysql-utilities'
       - 'mysqltuner'
       state: absent
+  
   - name: ENSURE THAT THE SERVICE IS RUNNING AFTER INSTALLATION
     service:
       name: mysql 
       state: started
+  
   - name: ENABLE MYSQL SERVICE TO BE LOADED AT BOOT
     command: systemctl disable mysql
+
+...

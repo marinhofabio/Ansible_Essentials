@@ -1,11 +1,16 @@
+---
+
 - hosts: servers
   user: fmarinho
   become: yes
   connection: ssh
   gather_facts: false
+ 
   tasks:
+   
    - name: DISABLING SELINUX
      command: setenforce 0
+   
    - name: APPLYING SELINUX CONFIGURATION FILE
      template:
        src:   files/config 
@@ -13,3 +18,5 @@
        owner: root
        group: root
        mode:  0660
+
+...

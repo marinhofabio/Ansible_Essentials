@@ -1,8 +1,13 @@
+---
+
 - hosts: servers
   user: stark
   become: yes
   connection: ssh
   gather_facts: false
+  
   tasks:
   - name: SETTING TIMEZONE
     command:  timedatectl set-timezone America/Sao_Paulo 
+
+...

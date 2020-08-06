@@ -1,8 +1,11 @@
+---
+
 - hosts: servers
   user: stark
   become: yes
   connection: ssh
   gather_facts: false
+
   tasks:
    - name: INSTALLING ESSENTIAL PACKAGES 
      apt:
@@ -16,3 +19,5 @@
        - 'tcpdump'  
        - 'unzip'
        state: latest
+
+...

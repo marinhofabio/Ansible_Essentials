@@ -1,10 +1,16 @@
+---
+
 - hosts: servers
   user: stark
   become: yes
   gather_facts: false
   connection: ssh
+ 
   tasks:
-  - name: RESTRICTING DMESG RING BUFFER
+ 
+ - name: RESTRICTING DMESG RING BUFFER
     sysctl:
        name: kernel.dmesg_restrict
        value: 1
+
+...
